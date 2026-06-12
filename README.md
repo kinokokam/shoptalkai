@@ -73,9 +73,9 @@ flowchart TB
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
-# 2. Local LLM (optional but recommended — Module 1 falls back to templates without it)
+# 2. Local LLM (default dependency — Module 1 generates hooks with it)
 brew install ollama          # or https://ollama.com/download
-ollama serve &
+ollama serve &               # skip if the Ollama app is already running
 ollama pull llama3:8b        # 4-bit quantised, ~4.7 GB
 
 # 3. Run
@@ -96,8 +96,9 @@ Product text (and optionally a photo, captioned by BLIP-2 on CPU) is prompted in
 locally-served quantised Llama 3 8B, which writes five hook candidates across distinct
 persuasion angles. A **transparent rubric** — curiosity, urgency, specificity, SG
 cultural relevance, spoken-hook brevity (each 0–20, +5 CTA bonus) — ranks them, so a
-seller can see *why* a hook scores 85, not just that it does. If Ollama is offline the
-page says so and serves deterministic SG-flavoured templates instead of failing.
+seller can see *why* a hook scores 85, not just that it does. Llama-written hooks are
+labelled with their source; if the Ollama server is unreachable the module silently
+serves deterministic SG-flavoured templates instead of failing.
 
 ### 2. Product–Creator Fit Matcher
 The catalog and the creator's niche description are embedded with MiniLM;
