@@ -14,7 +14,13 @@ from modules.content_scorer import (
     generate_hooks_llm,
     score_hooks,
 )
-from modules.shared import business_callout, fallback_banner, load_products, ollama_available
+from modules.shared import (
+    OLLAMA_MODEL,
+    business_callout,
+    fallback_banner,
+    load_products,
+    ollama_status,
+)
 
 st.set_page_config(page_title="Product → Content Scorer", page_icon="🎬", layout="wide")
 st.title("🎬 Product → Content Scorer")
@@ -50,12 +56,21 @@ with right:
     if image_file:
         st.image(image_file, width=220)
 
-llm_online = ollama_available()
-if not llm_online:
+status = ollama_status()
+llm_online = status["model_ready"]
+if not status["server"]:
     fallback_banner(
         "Ollama is not running — hooks below come from deterministic SG templates, not Llama 3.",
         "`brew install ollama && ollama serve`, then `ollama pull llama3:8b` (4-bit quantised, ~4.7 GB).",
     )
+elif not status["model_ready"]:
+    others = f" (pulled so far: {', '.join(status['models'])})" if status["models"] else ""
+    fallback_banner(
+        f"Ollama is running but `{OLLAMA_MODEL}` isn't pulled yet{others} — using template hooks meanwhile.",
+        f"`ollama pull {OLLAMA_MODEL}` (4-bit quantised, ~4.7 GB), then rerun this page.",
+    )
+else:
+    st.caption(f"🟢 Llama 3 hooks via local Ollama (`{OLLAMA_MODEL}`)")
 
 # ---------------------------------------------------------------- pipeline
 if st.button("Generate & score hooks", type="primary", disabled=not (product_name and description)):

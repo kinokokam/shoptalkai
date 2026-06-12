@@ -5,7 +5,7 @@ Entrypoint / landing page. Run with:  streamlit run app.py
 
 import streamlit as st
 
-from modules.shared import load_hashtags, ollama_available
+from modules.shared import load_hashtags, ollama_status
 
 st.set_page_config(
     page_title="shoptalkai — TikTok Shop SG Gap Analyser",
@@ -65,7 +65,14 @@ m1, m2, m3, m4 = st.columns(4)
 m1.metric("SG shoppable videos / mo / M pop", f"{sg_per_capita:,.0f}")
 m2.metric("ID equivalent", f"{id_per_capita:,.0f}", delta=f"{id_per_capita / sg_per_capita:.1f}× SG")
 m3.metric("TH equivalent", f"{th_per_capita:,.0f}", delta=f"{th_per_capita / sg_per_capita:.1f}× SG")
-m4.metric("Ollama (Llama 3 8B)", "🟢 online" if ollama_available() else "🔴 offline")
+_ollama = ollama_status()
+if _ollama["model_ready"]:
+    _llm_state = "🟢 ready"
+elif _ollama["server"]:
+    _llm_state = "🟡 pulling model"
+else:
+    _llm_state = "🔴 offline"
+m4.metric("Ollama (Llama 3 8B)", _llm_state)
 
 st.caption(
     "All models run locally on CPU. No paid APIs. Datasets are mock (live scraping of "

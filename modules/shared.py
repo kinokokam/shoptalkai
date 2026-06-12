@@ -31,12 +31,27 @@ def load_hashtags() -> pd.DataFrame:
     return pd.read_csv(DATA_DIR / "hashtag_volumes.csv")
 
 
-def ollama_available(timeout: float = 1.5) -> bool:
-    """True if a local Ollama server is reachable."""
+def ollama_status(timeout: float = 1.5) -> dict:
+    """Three-state Ollama health check.
+
+    Returns {server, model_ready, models}: the server can be up while the
+    target model is still unpulled, and the two need different UI messages.
+    """
     try:
-        return requests.get(f"{OLLAMA_URL}/api/tags", timeout=timeout).ok
+        resp = requests.get(f"{OLLAMA_URL}/api/tags", timeout=timeout)
+        resp.raise_for_status()
     except requests.RequestException:
-        return False
+        return {"server": False, "model_ready": False, "models": []}
+    models = [m["name"] for m in resp.json().get("models", [])]
+    # "llama3:8b" and its fully-qualified tag "llama3:8b-instruct-..." both count.
+    ready = any(name == OLLAMA_MODEL or name.startswith(OLLAMA_MODEL.split(":")[0] + ":8b")
+                for name in models)
+    return {"server": True, "model_ready": ready, "models": models}
+
+
+def ollama_available(timeout: float = 1.5) -> bool:
+    """True only if the server is up AND the target model is pulled."""
+    return ollama_status(timeout)["model_ready"]
 
 
 def ollama_generate(prompt: str, system: str = "", temperature: float = 0.8,
