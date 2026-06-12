@@ -7,20 +7,8 @@ returns ranked TikTok hook candidates with an explainable score breakdown.
 import pandas as pd
 import streamlit as st
 
-from modules.content_scorer import (
-    CAPTION_MODELS,
-    caption_image,
-    generate_hooks_fallback,
-    generate_hooks_llm,
-    score_hooks,
-)
-from modules.shared import (
-    OLLAMA_MODEL,
-    business_callout,
-    fallback_banner,
-    load_products,
-    ollama_status,
-)
+from modules.content_scorer import CAPTION_MODELS, caption_image, generate_hooks, score_hooks
+from modules.shared import OLLAMA_MODEL, business_callout, load_products
 
 st.set_page_config(page_title="Product → Content Scorer", page_icon="🎬", layout="wide")
 st.title("🎬 Product → Content Scorer")
@@ -56,22 +44,6 @@ with right:
     if image_file:
         st.image(image_file, width=220)
 
-status = ollama_status()
-llm_online = status["model_ready"]
-if not status["server"]:
-    fallback_banner(
-        "Ollama is not running — hooks below come from deterministic SG templates, not Llama 3.",
-        "`brew install ollama && ollama serve`, then `ollama pull llama3:8b` (4-bit quantised, ~4.7 GB).",
-    )
-elif not status["model_ready"]:
-    others = f" (pulled so far: {', '.join(status['models'])})" if status["models"] else ""
-    fallback_banner(
-        f"Ollama is running but `{OLLAMA_MODEL}` isn't pulled yet{others} — using template hooks meanwhile.",
-        f"`ollama pull {OLLAMA_MODEL}` (4-bit quantised, ~4.7 GB), then rerun this page.",
-    )
-else:
-    st.caption(f"🟢 Llama 3 hooks via local Ollama (`{OLLAMA_MODEL}`)")
-
 # ---------------------------------------------------------------- pipeline
 if st.button("Generate & score hooks", type="primary", disabled=not (product_name and description)):
     caption = None
@@ -83,16 +55,15 @@ if st.button("Generate & score hooks", type="primary", disabled=not (product_nam
                                     CAPTION_MODELS[caption_model_label])
         st.caption(f"🖼️ Vision model sees: *{caption}*")
 
-    if llm_online:
-        with st.spinner("Llama 3 8B (quantised, local) is writing hooks…"):
-            hooks = generate_hooks_llm(product_name, description, caption)
-    else:
-        hooks = generate_hooks_fallback(product_name, description)
+    with st.spinner("Llama 3 8B (quantised, local) is writing hooks — first run can take a few minutes on CPU…"):
+        hooks, source = generate_hooks(product_name, description, caption)
 
     scored = score_hooks(hooks)
     best = scored[0]
 
     st.subheader("Ranked hooks")
+    if source == "llama3":
+        st.caption(f"🟢 Written by `{OLLAMA_MODEL}` running locally via Ollama")
     st.metric("Best hook score", f"{best['total']} / 100")
     st.markdown(f"> **{best['hook']}**")
 
