@@ -1,0 +1,40 @@
+product_id,name,category,description,price_sgd,commission_rate,monthly_units_sold,rating
+P001,Glow Recipe-style Watermelon Dew Serum,Beauty & Skincare,"Lightweight hydrating serum with watermelon extract and hyaluronic acid, suited for humid SG weather",32.9,0.18,694,4.0
+P002,SPF50+ Invisible Sunscreen Stick,Beauty & Skincare,"Matte-finish sunscreen stick, no white cast, reapply over makeup, ideal for outdoor commutes",24.5,0.2,799,4.2
+P003,Snail Mucin Repair Essence 100ml,Beauty & Skincare,K-beauty essence for skin barrier repair and post-acne marks,28.0,0.17,268,4.0
+P004,Ceramide Barrier Moisturiser,Beauty & Skincare,Fragrance-free ceramide cream for sensitive aircon-dried skin,36.0,0.15,144,4.6
+P005,Vitamin C Brightening Ampoule,Beauty & Skincare,10% vitamin C ampoule targeting dullness and uneven tone,42.0,0.16,598,4.0
+P006,Heatless Curling Ribbon Set,Beauty & Skincare,Overnight heatless curls kit with satin ribbon and scrunchies,12.9,0.22,472,3.9
+P007,Foldable Laundry Basket with Wheels,Home & Living,Slim foldable laundry basket designed for HDB bathroom corners,19.9,0.12,135,4.1
+P008,Aromatherapy Diffuser with Rain Sounds,Home & Living,Ultrasonic essential-oil diffuser with white-noise mode for small bedrooms,45.0,0.14,557,4.5
+P009,Space-Saving Magnetic Knife Strip,Home & Living,Wall-mounted stainless knife strip for compact BTO kitchens,16.5,0.13,614,4.1
+P010,Anti-Mould Bathroom Sealant Tape,Home & Living,Waterproof self-adhesive tape that resists mould in humid bathrooms,8.9,0.25,705,4.6
+P011,Compact Air Fryer 3.5L,Home & Living,Small-footprint air fryer sized for 1-2 pax households,79.0,0.1,469,4.1
+P012,Blackout Magnetic Curtain Set,Home & Living,No-drill magnetic blackout curtains for rental-friendly installs,34.9,0.15,643,4.2
+P013,Wireless Earbuds with ENC Mic,Consumer Electronics,Budget true-wireless earbuds with call noise cancellation for MRT commutes,39.9,0.08,46,4.7
+P014,65W GaN Fast Charger 3-Port,Consumer Electronics,"Palm-size GaN charger that powers laptop, phone and earbuds at once",49.0,0.09,203,4.6
+P015,Mini Phone Tripod with Remote,Consumer Electronics,"Pocket tripod with bluetooth shutter remote, popular with content creators",15.9,0.18,388,4.2
+P016,Smart Door Sensor (No Hub),Consumer Electronics,"WiFi door sensor with phone alerts, renter-friendly, no hub needed",22.0,0.12,260,4.9
+P017,Portable Neck Fan 2025,Consumer Electronics,Bladeless rechargeable neck fan for outdoor queues and hawker dining,26.9,0.15,384,4.0
+P018,4K Action Camera Budget,Consumer Electronics,Entry 4K action cam with waterproof case for staycations and travel,89.0,0.07,429,4.0
+P019,Oversized UV-Cut Hoodie,Fashion & Accessories,"UPF50 sun-protection hoodie in muted tones, breathable for tropical heat",29.9,0.2,392,4.5
+P020,Minimalist Crossbody Phone Bag,Fashion & Accessories,"Slim crossbody bag that fits phone, EZ-link card and keys",18.5,0.22,866,3.9
+P021,Quick-Dry Gym Tee 3-Pack,Fashion & Accessories,Sweat-wicking tees bundle for daily gym and outdoor runs,25.0,0.18,510,4.4
+P022,Foldable Sun Visor Cap,Fashion & Accessories,Packable wide-brim visor for school pickups and park walks,13.9,0.24,427,4.0
+P023,Jelly Sandals SG Edition,Fashion & Accessories,Waterproof jelly sandals that survive sudden downpours,21.9,0.21,340,4.7
+P024,Salted Egg Fish Skin Family Pack,Food & Beverage,"Crispy salted egg fish skin snack, halal-certified, family share pack",14.9,0.16,673,4.8
+P025,Premium Pandan Kaya Spread Duo,Food & Beverage,Small-batch kaya made with fresh pandan and gula melaka,16.8,0.15,410,4.5
+P026,Cold Brew Coffee Concentrate 1L,Food & Beverage,"SG-roasted cold brew concentrate, 10 servings per bottle",19.9,0.14,761,4.0
+P027,Mala Instant Noodle Bundle,Food & Beverage,Numbing-spicy instant noodles with real Sichuan peppercorn oil pack,12.5,0.17,717,4.1
+P028,Low-Sugar Bubble Tea Kit,Food & Beverage,"DIY brown-sugar boba kit with stevia option, makes 6 cups",22.9,0.18,336,4.9
+P029,Collagen Peptide Sachets 30-Day,Health & Wellness,Unflavoured marine collagen sachets that dissolve in kopi or water,49.9,0.2,278,4.8
+P030,Ergonomic Lumbar Support Cushion,Health & Wellness,Memory-foam lumbar cushion for WFH chairs and office use,35.0,0.15,429,4.2
+P031,Magnesium Sleep Gummies,Health & Wellness,Sugar-free magnesium gummies for better sleep quality,28.9,0.21,690,4.7
+P032,Massage Gun Mini,Health & Wellness,"Palm-size percussive massage gun with 4 heads, USB-C charging",59.0,0.12,206,4.3
+P033,Posture Corrector Band,Health & Wellness,Discreet posture band wearable under office shirts,17.9,0.23,254,4.6
+P034,Montessori Busy Board for Toddlers,Baby & Kids,"Quiet-play sensory busy board for 1-3 year olds, flight-friendly",32.0,0.18,758,4.8
+P035,Leak-Proof Toddler Water Bottle,Baby & Kids,One-touch straw bottle that survives being thrown from strollers,18.9,0.19,703,4.0
+P036,Baby Sleep Sack 0.5 TOG,Baby & Kids,Breathable bamboo sleep sack rated for aircon nursery temps,26.5,0.17,690,4.1
+P037,Washable Play Mat XL,Baby & Kids,Machine-washable padded play mat sized for HDB living rooms,55.0,0.13,786,4.1
+P038,Kids Water Shoes Anti-Slip,Baby & Kids,Quick-dry water shoes for water playgrounds and beach trips,15.5,0.2,513,4.3
+P039,UV Steriliser Box for Baby Items,Baby & Kids,"Compact UV-C steriliser for pacifiers, teethers and small toys",68.0,0.11,695,4.6

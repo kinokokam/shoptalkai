@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Model caches / artifacts
+*.pt
+*.bin
+.cache/
+
+# OS
+.DS_Store

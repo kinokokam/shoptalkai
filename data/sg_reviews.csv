@@ -1,0 +1,164 @@
+review_id,category,review_text,stars
+R0001,Beauty & Skincare,"Repurchased twice already, bottle smaller than expected. Shiok!",5
+R0002,Beauty & Skincare,"Works exactly as shown, white cast was an issue. Packaging was secure.",5
+R0003,Beauty & Skincare,"Bought after seeing one video, no regrets. bottle smaller than expected",4
+R0004,Beauty & Skincare,Product okay but no SG creator covers how to use it properly. no breakouts after two weeks,3
+R0005,Beauty & Skincare,"Repurchased twice already, bottle smaller than expected. Shiok!",4
+R0006,Beauty & Skincare,"Quality is better than expected, white cast was an issue. Delivery to Ang Mo Kio took only 2 days.",4
+R0007,Beauty & Skincare,"Bought after seeing one video, no regrets. bottle smaller than expected",5
+R0008,Beauty & Skincare,Product okay but no SG creator covers how to use it properly. texture absorbs fast in our humidity,3
+R0009,Beauty & Skincare,"Bought after seeing one video, no regrets. no breakouts after two weeks",4
+R0010,Beauty & Skincare,"Legit good buy, texture absorbs fast in our humidity. Recommended to my colleagues.",5
+R0011,Beauty & Skincare,Cheaper than retail and works great. white cast was an issue,4
+R0012,Beauty & Skincare,"Legit good buy, texture absorbs fast in our humidity. Recommended to my colleagues.",5
+R0013,Beauty & Skincare,"Not as described, no breakouts after two weeks. Returning it.",3
+R0014,Beauty & Skincare,"Legit good buy, no breakouts after two weeks. Recommended to my colleagues.",5
+R0015,Beauty & Skincare,"Not as described, no breakouts after two weeks. Returning it.",2
+R0016,Beauty & Skincare,"Disappointed, white cast was an issue. The listing photos were misleading.",3
+R0017,Beauty & Skincare,"Bought after seeing one video, no regrets. no breakouts after two weeks",5
+R0018,Beauty & Skincare,"Legit good buy, no breakouts after two weeks. Recommended to my colleagues.",4
+R0019,Beauty & Skincare,"Works exactly as shown, texture absorbs fast in our humidity. Packaging was secure.",4
+R0020,Beauty & Skincare,Took long to decide because zero local content about this. texture absorbs fast in our humidity,2
+R0021,Beauty & Skincare,"Bought after seeing one video, no regrets. no breakouts after two weeks",4
+R0022,Home & Living,Product okay but no SG creator covers how to use it properly. fits my HDB bathroom corner perfectly,3
+R0023,Home & Living,"Repurchased twice already, magnet grip is strong. Shiok!",4
+R0024,Home & Living,"Works exactly as shown, fits my HDB bathroom corner perfectly. Packaging was secure.",5
+R0025,Home & Living,"Quality is better than expected, assembly took 5 minutes. Delivery to Bedok took only 2 days.",4
+R0026,Home & Living,"Bought after seeing one video, no regrets. magnet grip is strong",5
+R0027,Home & Living,"Quality is better than expected, magnet grip is strong. Delivery to Jurong East took only 2 days.",4
+R0028,Home & Living,"Legit good buy, fits my HDB bathroom corner perfectly. Recommended to my colleagues.",4
+R0029,Home & Living,"Repurchased twice already, magnet grip is strong. Shiok!",5
+R0030,Home & Living,Product okay but no SG creator covers how to use it properly. magnet grip is strong,2
+R0031,Home & Living,"Repurchased twice already, material feels flimsy. Shiok!",5
+R0032,Home & Living,Cheaper than retail and works great. assembly took 5 minutes,4
+R0033,Home & Living,"Quality is better than expected, fits my HDB bathroom corner perfectly. Delivery to Clementi took only 2 days.",4
+R0034,Home & Living,"Legit good buy, fits my HDB bathroom corner perfectly. Recommended to my colleagues.",4
+R0035,Home & Living,"Works exactly as shown, assembly took 5 minutes. Packaging was secure.",4
+R0036,Home & Living,"Not as described, assembly took 5 minutes. Returning it.",3
+R0037,Home & Living,"Works exactly as shown, material feels flimsy. Packaging was secure.",4
+R0038,Home & Living,Cheaper than retail and works great. assembly took 5 minutes,5
+R0039,Home & Living,"Works exactly as shown, material feels flimsy. Packaging was secure.",5
+R0040,Home & Living,"Hard to find any review video before buying, took a gamble. fits my HDB bathroom corner perfectly",3
+R0041,Home & Living,"Hard to find any review video before buying, took a gamble. fits my HDB bathroom corner perfectly",3
+R0042,Home & Living,Cheaper than retail and works great. fits my HDB bathroom corner perfectly,5
+R0043,Home & Living,"Repurchased twice already, material feels flimsy. Shiok!",5
+R0044,Home & Living,"Hard to find any review video before buying, took a gamble. assembly took 5 minutes",1
+R0045,Home & Living,"Disappointed, assembly took 5 minutes. The listing photos were misleading.",2
+R0046,Home & Living,"Works exactly as shown, material feels flimsy. Packaging was secure.",5
+R0047,Consumer Electronics,"Quality is better than expected, battery lasts my whole commute. Delivery to Sengkang took only 2 days.",5
+R0048,Consumer Electronics,Cheaper than retail and works great. pairing was instant,4
+R0049,Consumer Electronics,"Not as described, charger runs a bit warm. Returning it.",1
+R0050,Consumer Electronics,"Works exactly as shown, pairing was instant. Packaging was secure.",5
+R0051,Consumer Electronics,"Bought after seeing one video, no regrets. charger runs a bit warm",4
+R0052,Consumer Electronics,"Quality is better than expected, mic quality is average. Delivery to Bedok took only 2 days.",4
+R0053,Consumer Electronics,Took long to decide because zero local content about this. charger runs a bit warm,1
+R0054,Consumer Electronics,Product okay but no SG creator covers how to use it properly. charger runs a bit warm,1
+R0055,Consumer Electronics,Took long to decide because zero local content about this. charger runs a bit warm,2
+R0056,Consumer Electronics,"Works exactly as shown, battery lasts my whole commute. Packaging was secure.",4
+R0057,Consumer Electronics,Product okay but no SG creator covers how to use it properly. pairing was instant,2
+R0058,Consumer Electronics,"Bought after seeing one video, no regrets. pairing was instant",4
+R0059,Consumer Electronics,Cheaper than retail and works great. battery lasts my whole commute,5
+R0060,Consumer Electronics,"Quality so-so, mic quality is average. Wish there were real demo videos first.",1
+R0061,Consumer Electronics,Took long to decide because zero local content about this. pairing was instant,1
+R0062,Consumer Electronics,"Repurchased twice already, mic quality is average. Shiok!",5
+R0063,Consumer Electronics,"Not as described, battery lasts my whole commute. Returning it.",3
+R0064,Consumer Electronics,"Quality is better than expected, charger runs a bit warm. Delivery to Tampines took only 2 days.",4
+R0065,Consumer Electronics,"Quality is better than expected, mic quality is average. Delivery to Ang Mo Kio took only 2 days.",4
+R0066,Consumer Electronics,Took long to decide because zero local content about this. mic quality is average,2
+R0067,Consumer Electronics,Cheaper than retail and works great. pairing was instant,5
+R0068,Consumer Electronics,"Quality so-so, pairing was instant. Wish there were real demo videos first.",2
+R0069,Consumer Electronics,"Quality is better than expected, mic quality is average. Delivery to Woodlands took only 2 days.",4
+R0070,Consumer Electronics,"Legit good buy, mic quality is average. Recommended to my colleagues.",5
+R0071,Consumer Electronics,"Bought after seeing one video, no regrets. charger runs a bit warm",4
+R0072,Consumer Electronics,"Works exactly as shown, mic quality is average. Packaging was secure.",4
+R0073,Fashion & Accessories,"Bought after seeing one video, no regrets. sizing runs small",4
+R0074,Fashion & Accessories,"Repurchased twice already, fabric is breathable for our weather. Shiok!",5
+R0075,Fashion & Accessories,"Not as described, sizing runs small. Returning it.",2
+R0076,Fashion & Accessories,"Bought after seeing one video, no regrets. fabric is breathable for our weather",5
+R0077,Fashion & Accessories,"Works exactly as shown, strap length is adjustable. Packaging was secure.",4
+R0078,Fashion & Accessories,"Hard to find any review video before buying, took a gamble. strap length is adjustable",2
+R0079,Fashion & Accessories,"Not as described, colour faded after washing. Returning it.",3
+R0080,Fashion & Accessories,"Not as described, strap length is adjustable. Returning it.",1
+R0081,Fashion & Accessories,"Quality so-so, strap length is adjustable. Wish there were real demo videos first.",1
+R0082,Fashion & Accessories,Took long to decide because zero local content about this. strap length is adjustable,2
+R0083,Fashion & Accessories,"Works exactly as shown, colour faded after washing. Packaging was secure.",5
+R0084,Fashion & Accessories,"Legit good buy, fabric is breathable for our weather. Recommended to my colleagues.",4
+R0085,Fashion & Accessories,"Works exactly as shown, sizing runs small. Packaging was secure.",4
+R0086,Fashion & Accessories,Cheaper than retail and works great. strap length is adjustable,4
+R0087,Fashion & Accessories,"Repurchased twice already, strap length is adjustable. Shiok!",5
+R0088,Fashion & Accessories,Cheaper than retail and works great. colour faded after washing,5
+R0089,Fashion & Accessories,"Works exactly as shown, sizing runs small. Packaging was secure.",4
+R0090,Fashion & Accessories,"Repurchased twice already, fabric is breathable for our weather. Shiok!",5
+R0091,Fashion & Accessories,"Quality so-so, sizing runs small. Wish there were real demo videos first.",1
+R0092,Fashion & Accessories,"Not as described, fabric is breathable for our weather. Returning it.",3
+R0093,Fashion & Accessories,"Quality is better than expected, fabric is breathable for our weather. Delivery to Sengkang took only 2 days.",4
+R0094,Fashion & Accessories,Product okay but no SG creator covers how to use it properly. fabric is breathable for our weather,2
+R0095,Food & Beverage,Cheaper than retail and works great. portion smaller than photos,5
+R0096,Food & Beverage,"Repurchased twice already, portion smaller than photos. Shiok!",5
+R0097,Food & Beverage,"Legit good buy, taste is close to hawker standard. Recommended to my colleagues.",4
+R0098,Food & Beverage,"Works exactly as shown, taste is close to hawker standard. Packaging was secure.",4
+R0099,Food & Beverage,"Quality is better than expected, expiry date was generous. Delivery to Bedok took only 2 days.",4
+R0100,Food & Beverage,"Quality is better than expected, expiry date was generous. Delivery to Clementi took only 2 days.",5
+R0101,Food & Beverage,"Bought after seeing one video, no regrets. taste is close to hawker standard",5
+R0102,Food & Beverage,"Quality is better than expected, portion smaller than photos. Delivery to Sengkang took only 2 days.",5
+R0103,Food & Beverage,Product okay but no SG creator covers how to use it properly. taste is close to hawker standard,1
+R0104,Food & Beverage,Cheaper than retail and works great. taste is close to hawker standard,5
+R0105,Food & Beverage,"Works exactly as shown, portion smaller than photos. Packaging was secure.",5
+R0106,Food & Beverage,"Repurchased twice already, packaging kept it fresh. Shiok!",5
+R0107,Food & Beverage,"Disappointed, packaging kept it fresh. The listing photos were misleading.",2
+R0108,Food & Beverage,"Legit good buy, portion smaller than photos. Recommended to my colleagues.",5
+R0109,Food & Beverage,"Works exactly as shown, portion smaller than photos. Packaging was secure.",4
+R0110,Food & Beverage,"Quality is better than expected, portion smaller than photos. Delivery to Clementi took only 2 days.",4
+R0111,Food & Beverage,"Legit good buy, packaging kept it fresh. Recommended to my colleagues.",4
+R0112,Food & Beverage,Cheaper than retail and works great. expiry date was generous,4
+R0113,Food & Beverage,Cheaper than retail and works great. portion smaller than photos,5
+R0114,Food & Beverage,"Legit good buy, expiry date was generous. Recommended to my colleagues.",4
+R0115,Food & Beverage,"Repurchased twice already, expiry date was generous. Shiok!",5
+R0116,Food & Beverage,"Quality is better than expected, taste is close to hawker standard. Delivery to Woodlands took only 2 days.",4
+R0117,Food & Beverage,"Bought after seeing one video, no regrets. portion smaller than photos",5
+R0118,Health & Wellness,"Repurchased twice already, effect is subtle so far. Shiok!",5
+R0119,Health & Wellness,Cheaper than retail and works great. easy to mix into kopi,4
+R0120,Health & Wellness,"Works exactly as shown, easy to mix into kopi. Packaging was secure.",4
+R0121,Health & Wellness,Took long to decide because zero local content about this. effect is subtle so far,1
+R0122,Health & Wellness,Cheaper than retail and works great. easy to mix into kopi,4
+R0123,Health & Wellness,Product okay but no SG creator covers how to use it properly. effect is subtle so far,1
+R0124,Health & Wellness,"Works exactly as shown, easy to mix into kopi. Packaging was secure.",4
+R0125,Health & Wellness,"Not as described, effect is subtle so far. Returning it.",2
+R0126,Health & Wellness,"Bought after seeing one video, no regrets. my back pain improved within days",5
+R0127,Health & Wellness,"Quality is better than expected, strap digs in after an hour. Delivery to Clementi took only 2 days.",4
+R0128,Health & Wellness,"Works exactly as shown, my back pain improved within days. Packaging was secure.",4
+R0129,Health & Wellness,Took long to decide because zero local content about this. my back pain improved within days,1
+R0130,Health & Wellness,"Repurchased twice already, easy to mix into kopi. Shiok!",5
+R0131,Health & Wellness,Took long to decide because zero local content about this. strap digs in after an hour,3
+R0132,Health & Wellness,"Legit good buy, my back pain improved within days. Recommended to my colleagues.",4
+R0133,Health & Wellness,"Quality is better than expected, easy to mix into kopi. Delivery to Bedok took only 2 days.",4
+R0134,Health & Wellness,"Bought after seeing one video, no regrets. my back pain improved within days",5
+R0135,Health & Wellness,"Repurchased twice already, effect is subtle so far. Shiok!",4
+R0136,Health & Wellness,Cheaper than retail and works great. strap digs in after an hour,4
+R0137,Health & Wellness,"Disappointed, easy to mix into kopi. The listing photos were misleading.",1
+R0138,Health & Wellness,"Works exactly as shown, easy to mix into kopi. Packaging was secure.",4
+R0139,Health & Wellness,"Bought after seeing one video, no regrets. effect is subtle so far",5
+R0140,Health & Wellness,"Works exactly as shown, effect is subtle so far. Packaging was secure.",5
+R0141,Health & Wellness,"Repurchased twice already, strap digs in after an hour. Shiok!",4
+R0142,Health & Wellness,"Disappointed, effect is subtle so far. The listing photos were misleading.",1
+R0143,Health & Wellness,"Works exactly as shown, my back pain improved within days. Packaging was secure.",4
+R0144,Baby & Kids,"Works exactly as shown, my kid is obsessed with it. Packaging was secure.",4
+R0145,Baby & Kids,"Quality so-so, my kid is obsessed with it. Wish there were real demo videos first.",2
+R0146,Baby & Kids,Cheaper than retail and works great. edges could be softer,4
+R0147,Baby & Kids,"Works exactly as shown, my kid is obsessed with it. Packaging was secure.",5
+R0148,Baby & Kids,"Not as described, survived my toddler throwing it daily. Returning it.",1
+R0149,Baby & Kids,Cheaper than retail and works great. survived my toddler throwing it daily,4
+R0150,Baby & Kids,"Legit good buy, my kid is obsessed with it. Recommended to my colleagues.",4
+R0151,Baby & Kids,Cheaper than retail and works great. my kid is obsessed with it,4
+R0152,Baby & Kids,"Legit good buy, easy to wash and dry. Recommended to my colleagues.",5
+R0153,Baby & Kids,"Quality so-so, survived my toddler throwing it daily. Wish there were real demo videos first.",3
+R0154,Baby & Kids,"Bought after seeing one video, no regrets. easy to wash and dry",4
+R0155,Baby & Kids,"Quality is better than expected, easy to wash and dry. Delivery to Jurong East took only 2 days.",5
+R0156,Baby & Kids,"Disappointed, easy to wash and dry. The listing photos were misleading.",3
+R0157,Baby & Kids,"Works exactly as shown, edges could be softer. Packaging was secure.",5
+R0158,Baby & Kids,Product okay but no SG creator covers how to use it properly. my kid is obsessed with it,2
+R0159,Baby & Kids,"Legit good buy, easy to wash and dry. Recommended to my colleagues.",5
+R0160,Baby & Kids,"Repurchased twice already, edges could be softer. Shiok!",4
+R0161,Baby & Kids,Cheaper than retail and works great. my kid is obsessed with it,5
+R0162,Baby & Kids,Cheaper than retail and works great. edges could be softer,5
+R0163,Baby & Kids,Product okay but no SG creator covers how to use it properly. easy to wash and dry,1

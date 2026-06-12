@@ -1,0 +1,15 @@
+# Core app
+streamlit>=1.35
+pandas>=2.0
+numpy>=1.26
+altair>=5.0
+
+# Local ML (CPU-only, no GPU required)
+torch>=2.2
+transformers>=4.40
+sentence-transformers>=2.7
+accelerate>=0.30
+pillow>=10.0
+
+# Ollama HTTP client (no paid APIs)
+requests>=2.31
