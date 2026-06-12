@@ -5,14 +5,17 @@ candidates --rubric--> scored & ranked hooks.
 
 Everything runs locally on CPU. Each model stage degrades gracefully:
 - no image            -> skip captioning, use the text description alone
-- Ollama offline      -> deterministic template hooks (clearly flagged in UI)
+- Ollama unreachable  -> silent template fallback (generate_hooks reports the
+                         source so the UI can label output, never warn)
 """
 
+import json
 import re
 
+import requests
 import streamlit as st
 
-from modules.shared import ollama_generate
+from modules.shared import OLLAMA_MODEL, OLLAMA_URL
 
 # BLIP-2 (Salesforce/blip2-opt-2.7b) is the spec'd captioner; it runs on CPU but
 # weighs ~15 GB on disk. blip-base (~1 GB) is offered as a fast-demo alternative.
@@ -53,6 +56,39 @@ _SYSTEM_PROMPT = (
 )
 
 
+def _llama_generate(prompt: str, system: str) -> str:
+    """Stream a completion from the local quantised Llama 3 8B.
+
+    Streaming matters on CPU: with stream=false no bytes arrive until the full
+    generation finishes, so one slow run trips the HTTP read timeout. Streamed
+    chunks reset the read clock token by token. keep_alive holds the model in
+    memory so back-to-back demo runs skip the reload cost.
+    """
+    resp = requests.post(
+        f"{OLLAMA_URL}/api/generate",
+        json={
+            "model": OLLAMA_MODEL,
+            "prompt": prompt,
+            "system": system,
+            "stream": True,
+            "keep_alive": "30m",
+            "options": {"temperature": 0.8, "num_predict": 256},
+        },
+        stream=True,
+        timeout=(5, 180),  # (connect, per-chunk read) — first chunk includes model load
+    )
+    resp.raise_for_status()
+    parts = []
+    for line in resp.iter_lines():
+        if not line:
+            continue
+        chunk = json.loads(line)
+        parts.append(chunk.get("response", ""))
+        if chunk.get("done"):
+            break
+    return "".join(parts).strip()
+
+
 def generate_hooks_llm(product_name: str, description: str, caption: str | None,
                        n: int = 5) -> list[str]:
     """Ask local quantised Llama 3 8B for n hook candidates."""
@@ -65,10 +101,23 @@ def generate_hooks_llm(product_name: str, description: str, caption: str | None,
         f"price anchor, local-lifestyle. Return them as a numbered list, one hook per "
         f"line, nothing else."
     )
-    raw = ollama_generate(prompt, system=_SYSTEM_PROMPT)
+    raw = _llama_generate(prompt, system=_SYSTEM_PROMPT)
     hooks = [re.sub(r"^\s*\d+[\.\)]\s*", "", line).strip().strip('"')
              for line in raw.splitlines() if re.match(r"^\s*\d+[\.\)]", line)]
     return hooks[:n] if hooks else [raw.strip()[:120]]
+
+
+def generate_hooks(product_name: str, description: str, caption: str | None,
+                   n: int = 5) -> tuple[list[str], str]:
+    """Llama 3 by default; silent template fallback only if Ollama is unreachable.
+
+    Returns (hooks, source) where source is "llama3" or "template" so the UI
+    can label the output without ever surfacing a warning state.
+    """
+    try:
+        return generate_hooks_llm(product_name, description, caption, n), "llama3"
+    except (requests.RequestException, json.JSONDecodeError, KeyError):
+        return generate_hooks_fallback(product_name, description, n), "template"
 
 
 def generate_hooks_fallback(product_name: str, description: str, n: int = 5) -> list[str]:
