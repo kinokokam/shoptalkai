@@ -49,11 +49,12 @@ flowchart TB
         DB["DistilBERT SST-2"]
     end
 
-    subgraph DATA["data/ (mock — TikTok endpoints blocked)"]
-        PR["products.csv"]
-        CR["creators.csv"]
-        RV["sg_reviews.csv"]
-        HT["hashtag_volumes.csv<br/>SG vs ID vs TH"]
+    subgraph DATA["data/"]
+        PR["products.csv<br/>REAL · Kaggle via MCP"]
+        CH["channel_revenue.csv<br/>REAL · TikTok Shop vs channels"]
+        CR["creators.csv<br/>mock"]
+        RV["sg_reviews.csv<br/>mock"]
+        HT["hashtag_volumes.csv<br/>mock · SG vs ID vs TH"]
     end
 
     P1 --> CS;  P2 --> FM;  P3 --> GD
@@ -63,7 +64,7 @@ flowchart TB
     CS -.->|Ollama offline| FB["template fallback"]
     FM --> MINI
     GD --> DB
-    SH --> PR & CR & RV & HT
+    SH --> PR & CH & CR & RV & HT
 ```
 
 ## Quickstart
@@ -86,8 +87,14 @@ First runs download models from Hugging Face into the local cache:
 MiniLM ~90 MB, DistilBERT ~270 MB, BLIP-base ~1 GB, BLIP-2 ~15 GB (optional —
 Module 1's model picker defaults to BLIP-base so the demo stays fast on CPU).
 
-Regenerate mock data any time with `python data/generate_mock_data.py` (seeded,
-reproducible).
+**Data provenance.** The **product catalog is real** — 80 SKUs from the Kaggle
+[*E-Commerce & Retail Supply Chain*](https://www.kaggle.com/datasets/rajhkumarr/e-commerce-and-retail-supply-chain)
+dataset, pulled live via the **Kaggle MCP** into `data/raw/` and adapted by
+`python data/adapt_kaggle.py` (real name/category/price/rating + real avg-monthly
+TikTok Shop units from 160k sales, plus `channel_revenue.csv`). The mock SG layer
+(creators, reviews, hashtag volumes) regenerates with
+`python data/generate_mock_data.py` (seeded). Derived CSVs are committed, so the
+app runs without re-downloading.
 
 ## How each module works
 
@@ -111,12 +118,19 @@ attributable monthly orders. Output: top-5 table plus a fit-vs-earnings scatter
 DistilBERT scores every SG review; `demand = review volume × positive share`.
 `supply_gap = 1 − (SG per-capita videos ÷ mean(ID, TH per-capita))`.
 `opportunity = normalised demand × supply gap`, ranked per category — high demand met
-by thin content is exactly where incremental GMV is cheapest to unlock.
+by thin content is exactly where incremental GMV is cheapest to unlock. Below it, a
+**real channel benchmark** from 160k actual transactions (2016–2022) shows TikTok Shop
+is the #2 channel behind Amazon with headroom in every category — corroborating the
+under-penetration story with real sales, not just the mock content-gap signal.
 
 ## Honest limitations
 
-- **Datasets are mock** (live TikTok scraping is blocked) but seeded, reproducible, and
-  shaped to real SEA dynamics; every pipeline is scrape-ready — swap the CSVs.
+- **Products are real, the SG content layer is mock.** The 80-SKU catalog and channel
+  data come from a real Kaggle dataset (pulled via the Kaggle MCP). The SG-specific
+  signals (hashtag volumes, creator profiles, review text) stay mock because live TikTok
+  endpoints are blocked — seeded, reproducible, and scrape-ready. The Kaggle data is also
+  *global multi-channel*, so it has no SG/ID/TH split; it corroborates the channel story,
+  it doesn't replace the geographic thesis.
 - The 2% view→order attribution rate and the 0.7/0.3 fit weights are stated assumptions,
   surfaced in the UI and tunable.
 - BLIP-2 on CPU is slow (~15 GB weights); the UI offers BLIP-base as a fast demo mode.

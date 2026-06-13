@@ -31,6 +31,13 @@ def load_hashtags() -> pd.DataFrame:
     return pd.read_csv(DATA_DIR / "hashtag_volumes.csv")
 
 
+@st.cache_data
+def load_channel_revenue() -> pd.DataFrame:
+    """Real category × channel net revenue, derived from the Kaggle sales.csv
+    (rajhkumarr/e-commerce-and-retail-supply-chain) by data/adapt_kaggle.py."""
+    return pd.read_csv(DATA_DIR / "channel_revenue.csv")
+
+
 def ollama_status(timeout: float = 1.5) -> dict:
     """Three-state Ollama health check.
 

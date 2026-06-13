@@ -9,7 +9,7 @@ import pandas as pd
 import streamlit as st
 
 from modules.gap_dashboard import category_opportunity, score_review_sentiment
-from modules.shared import business_callout, load_hashtags, load_reviews
+from modules.shared import business_callout, load_channel_revenue, load_hashtags, load_reviews
 
 st.set_page_config(page_title="SG Gap Dashboard", page_icon="📊", layout="wide")
 st.title("📊 SG Content-Commerce Gap Dashboard")
@@ -92,6 +92,64 @@ with st.expander("Scored reviews (DistilBERT output)"):
         scored[["category", "review_text", "stars", "sentiment", "sentiment_score"]],
         use_container_width=True, hide_index=True,
     )
+
+# ----------------------------------------------- real transaction benchmark
+st.divider()
+st.subheader("🔌 Real channel benchmark — TikTok Shop penetration")
+st.markdown(
+    "The gap above uses **mock** SG content-supply data (live TikTok endpoints are "
+    "blocked). This panel is a **reality check from real transactions**: 160k sales "
+    "(2016–2022) from the Kaggle *E-Commerce & Retail Supply Chain* dataset, pulled via "
+    "the Kaggle MCP, where TikTok Shop is one channel alongside Amazon / Zalora / retail. "
+    "It confirms TikTok Shop is a real but **under-penetrated channel** — second to "
+    "Amazon, with material headroom in every category."
+)
+
+channel = load_channel_revenue()
+overall = channel.groupby("channel", as_index=False)["net_revenue"].sum()
+overall["is_tiktok"] = overall["channel"] == "TikTokShop"
+tiktok_share_total = (
+    overall.loc[overall["is_tiktok"], "net_revenue"].sum() / overall["net_revenue"].sum()
+)
+
+cc1, cc2 = st.columns(2)
+with cc1:
+    st.caption(f"Net revenue by channel — TikTok Shop = {tiktok_share_total:.0%} of total")
+    mix = (
+        alt.Chart(overall)
+        .mark_bar()
+        .encode(
+            x=alt.X("net_revenue", title="Net revenue 2016–2022 (S$)"),
+            y=alt.Y("channel", sort="-x", title=None),
+            color=alt.condition(alt.datum.is_tiktok, alt.value("#ee1d52"), alt.value("#cccccc")),
+            tooltip=["channel", alt.Tooltip("net_revenue", format=",.0f")],
+        )
+        .properties(height=220)
+    )
+    st.altair_chart(mix, use_container_width=True)
+with cc2:
+    st.caption("TikTok Shop share of category revenue")
+    piv = channel.pivot_table(index="category", columns="channel",
+                              values="net_revenue", aggfunc="sum", fill_value=0)
+    share = (piv["TikTokShop"] / piv.sum(axis=1)).reset_index(name="tiktok_share")
+    share_chart = (
+        alt.Chart(share)
+        .mark_bar(color="#ee1d52")
+        .encode(
+            x=alt.X("tiktok_share", title="TikTok Shop % of category revenue",
+                    axis=alt.Axis(format=".0%")),
+            y=alt.Y("category", sort="-x", title=None),
+            tooltip=["category", alt.Tooltip("tiktok_share", format=".1%")],
+        )
+        .properties(height=220)
+    )
+    st.altair_chart(share_chart, use_container_width=True)
+
+st.caption(
+    "Real, but **global multi-channel** data — it carries no SG/ID/TH split, so it "
+    "corroborates the *channel* under-penetration story without replacing the SG "
+    "content-gap thesis above. Source: rajhkumarr/e-commerce-and-retail-supply-chain."
+)
 
 st.caption(
     "opportunity = normalised(demand) × supply_gap, where demand = review volume × "
