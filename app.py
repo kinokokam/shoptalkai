@@ -5,7 +5,7 @@ Entrypoint / landing page. Run with:  streamlit run app.py
 
 import streamlit as st
 
-from modules.shared import load_hashtags, ollama_status
+from modules.shared import OLLAMA_MODEL, load_hashtags, ollama_status
 
 st.set_page_config(
     page_title="shoptalkai — TikTok Shop SG Gap Analyser",
@@ -34,7 +34,7 @@ with col1:
     st.markdown("### 1️⃣ Product → Content Scorer")
     st.markdown(
         "Turn any product into ranked TikTok video hooks. "
-        "**BLIP-2** captions the product image, **Llama 3 8B** (quantised, via Ollama) "
+        "**BLIP-2** captions the product image, **Llama 3.2 3B** (quantised, via Ollama) "
         "writes the hooks, a transparent rubric scores them."
     )
     st.page_link("pages/1_Product_to_Content_Scorer.py", label="Open module →", icon="🎬")
@@ -72,7 +72,7 @@ elif _ollama["server"]:
     _llm_state = "🟡 pulling model"
 else:
     _llm_state = "🔴 offline"
-m4.metric("Ollama (Llama 3 8B)", _llm_state)
+m4.metric(f"Ollama ({OLLAMA_MODEL})", _llm_state)
 
 st.caption(
     "All models run locally on CPU. No paid APIs. Datasets are mock (live scraping of "

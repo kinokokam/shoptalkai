@@ -1,9 +1,9 @@
 """Module 1 core logic: Product → Content Scorer.
 
-Pipeline: product image --BLIP-2--> caption --Llama 3 8B (Ollama)--> 5 hook
+Pipeline: product image --BLIP-2--> caption --Llama 3.2 (Ollama)--> 5 hook
 candidates --rubric--> scored & ranked hooks.
 
-Everything runs locally on CPU. Each model stage degrades gracefully:
+Everything runs locally. Each model stage degrades gracefully:
 - no image            -> skip captioning, use the text description alone
 - Ollama unreachable  -> silent template fallback (generate_hooks reports the
                          source so the UI can label output, never warn)
@@ -69,7 +69,7 @@ _SYSTEM_PROMPT = (
 
 
 def _llama_generate(prompt: str, system: str) -> str:
-    """Stream a completion from the local quantised Llama 3 8B.
+    """Stream a completion from the local quantised Llama model.
 
     Streaming matters on CPU: with stream=false no bytes arrive until the full
     generation finishes, so one slow run trips the HTTP read timeout. Streamed
@@ -103,7 +103,7 @@ def _llama_generate(prompt: str, system: str) -> str:
 
 def generate_hooks_llm(product_name: str, description: str, caption: str | None,
                        n: int = 5) -> list[str]:
-    """Ask local quantised Llama 3 8B for n hook candidates."""
+    """Ask the local quantised Llama model for n hook candidates."""
     visual = f'\nWhat the product looks like (image caption): "{caption}"' if caption else ""
     prompt = (
         f'Product: "{product_name}"\n'

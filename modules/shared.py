@@ -1,5 +1,6 @@
 """Shared helpers: data loading, Ollama detection, business-framing callouts."""
 
+import os
 from pathlib import Path
 
 import pandas as pd
@@ -8,7 +9,9 @@ import streamlit as st
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 OLLAMA_URL = "http://localhost:11434"
-OLLAMA_MODEL = "llama3:8b"  # 4-bit quantised by default in Ollama
+# Default to a 3B model: it fits ~8 GB machines without swapping and keeps
+# llama.cpp + Metal acceleration. Override with the OLLAMA_MODEL env var.
+OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "llama3.2:3b")
 
 
 @st.cache_data
@@ -50,8 +53,9 @@ def ollama_status(timeout: float = 1.5) -> dict:
     except requests.RequestException:
         return {"server": False, "model_ready": False, "models": []}
     models = [m["name"] for m in resp.json().get("models", [])]
-    # "llama3:8b" and its fully-qualified tag "llama3:8b-instruct-..." both count.
-    ready = any(name == OLLAMA_MODEL or name.startswith(OLLAMA_MODEL.split(":")[0] + ":8b")
+    # The configured tag and its fully-qualified variant both count, e.g.
+    # "llama3.2:3b" and "llama3.2:3b-instruct-q4_K_M".
+    ready = any(name == OLLAMA_MODEL or name.startswith(OLLAMA_MODEL + "-")
                 for name in models)
     return {"server": True, "model_ready": ready, "models": models}
 
@@ -63,7 +67,7 @@ def ollama_available(timeout: float = 1.5) -> bool:
 
 def ollama_generate(prompt: str, system: str = "", temperature: float = 0.8,
                     timeout: int = 300) -> str:
-    """Single-shot generation against the local quantised Llama 3 8B."""
+    """Single-shot generation against the local quantised Llama model."""
     resp = requests.post(
         f"{OLLAMA_URL}/api/generate",
         json={

@@ -55,7 +55,7 @@ if st.button("Generate & score hooks", type="primary", disabled=not (product_nam
                                     CAPTION_MODELS[caption_model_label])
         st.caption(f"🖼️ Vision model sees: *{caption}*")
 
-    with st.spinner("Llama 3 8B (quantised, local) is writing hooks — first run can take a few minutes on CPU…"):
+    with st.spinner(f"`{OLLAMA_MODEL}` (quantised, local) is writing hooks — the first run loads the model, then it's fast…"):
         hooks, source = generate_hooks(product_name, description, caption)
 
     scored = score_hooks(hooks)

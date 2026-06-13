@@ -19,7 +19,7 @@ running **entirely locally on CPU**, with no paid APIs.
 
 | # | Module | Models | What it answers |
 |---|--------|--------|-----------------|
-| 1 | 🎬 Product → Content Scorer | BLIP-2 (image caption) + quantised Llama 3 8B via Ollama + explainable rubric | *"I'm a seller — what video do I shoot for this product?"* |
+| 1 | 🎬 Product → Content Scorer | BLIP-2 (image caption) + quantised Llama 3.2 3B via Ollama + explainable rubric | *"I'm a seller — what video do I shoot for this product?"* |
 | 2 | 🤝 Product–Creator Fit Matcher | `sentence-transformers/all-MiniLM-L6-v2` | *"I'm a creator — which 5 products should I promote?"* |
 | 3 | 📊 SG Gap Dashboard | DistilBERT (SST-2 sentiment) + per-capita hashtag benchmarks | *"I'm an analyst — which categories leave the most GMV on the table?"* |
 
@@ -44,7 +44,7 @@ flowchart TB
 
     subgraph MODELS["Local CPU models (no GPU, no paid APIs)"]
         BLIP["BLIP-2 OPT-2.7B<br/>(or BLIP-base fast mode)"]
-        LLAMA["Llama 3 8B, 4-bit quantised<br/>via Ollama :11434"]
+        LLAMA["Llama 3.2 3B, 4-bit quantised<br/>via Ollama :11434"]
         MINI["all-MiniLM-L6-v2"]
         DB["DistilBERT SST-2"]
     end
@@ -77,7 +77,9 @@ pip install -r requirements.txt
 # 2. Local LLM (default dependency — Module 1 generates hooks with it)
 brew install ollama          # or https://ollama.com/download
 ollama serve &               # skip if the Ollama app is already running
-ollama pull llama3:8b        # 4-bit quantised, ~4.7 GB
+ollama pull llama3.2:3b      # 4-bit quantised, ~2 GB — fits 8 GB RAM, uses Metal
+                             # (override with the OLLAMA_MODEL env var; an 8 GB
+                             #  machine swaps badly on the 8B model and is ~10x slower)
 
 # 3. Run
 streamlit run app.py
@@ -100,7 +102,7 @@ app runs without re-downloading.
 
 ### 1. Product → Content Scorer
 Product text (and optionally a photo, captioned by BLIP-2 on CPU) is prompted into a
-locally-served quantised Llama 3 8B, which writes five hook candidates across distinct
+locally-served quantised Llama 3.2 3B, which writes five hook candidates across distinct
 persuasion angles. A **transparent rubric** — curiosity, urgency, specificity, SG
 cultural relevance, spoken-hook brevity (each 0–20, +5 CTA bonus) — ranks them, so a
 seller can see *why* a hook scores 85, not just that it does. Llama-written hooks are
