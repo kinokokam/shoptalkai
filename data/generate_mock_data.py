@@ -259,7 +259,10 @@ def _write_csv(filename: str, rows: list[dict]) -> None:
 
 
 if __name__ == "__main__":
-    write_products()
+    # NOTE: products.csv is no longer generated here. The real product catalog
+    # now comes from the Kaggle dataset via `python data/adapt_kaggle.py`
+    # (Modules 1 & 2 run on real SKUs). write_products()/PRODUCTS are kept only
+    # as a fallback if you ever need a fully-synthetic catalog again.
     write_creators()
     write_reviews()
     write_hashtags()

@@ -1,0 +1,36 @@
+category,channel,net_revenue,units
+Beauty,Amazon,304070.13,15264
+Beauty,TikTokShop,188158.48,9371
+Beauty,Zalora,112037.65,5502
+Beauty,Retail_Flagship,102204.17,5502
+Beauty,Retail_Kiosk,61944.58,3345
+Electronics Accessories,Amazon,297086.51,5262
+Electronics Accessories,TikTokShop,190355.0,3365
+Electronics Accessories,Zalora,101071.91,1725
+Electronics Accessories,Retail_Flagship,98581.88,1754
+Electronics Accessories,Retail_Kiosk,47802.78,816
+Food & Beverage,Amazon,116785.02,18628
+Food & Beverage,TikTokShop,72666.84,11159
+Food & Beverage,Zalora,46316.86,6925
+Food & Beverage,Retail_Flagship,36298.11,6831
+Food & Beverage,Retail_Kiosk,23654.95,4455
+Home & Living,Amazon,235424.18,6661
+Home & Living,TikTokShop,137353.66,3857
+Home & Living,Zalora,64903.86,1941
+Home & Living,Retail_Flagship,61153.92,1911
+Home & Living,Retail_Kiosk,39405.62,1238
+Home Care,Amazon,203881.06,25561
+Home Care,TikTokShop,129394.35,15698
+Home Care,Zalora,81262.7,9565
+Home Care,Retail_Flagship,69726.55,9694
+Home Care,Retail_Kiosk,45436.24,6308
+Personal Care,Amazon,171857.77,17786
+Personal Care,TikTokShop,109987.21,11143
+Personal Care,Zalora,66428.78,6579
+Personal Care,Retail_Flagship,58316.74,6694
+Personal Care,Retail_Kiosk,38788.64,4437
+Sports & Lifestyle,Amazon,749433.36,9549
+Sports & Lifestyle,TikTokShop,453165.92,5826
+Sports & Lifestyle,Zalora,275295.7,3514
+Sports & Lifestyle,Retail_Flagship,267444.5,3526
+Sports & Lifestyle,Retail_Kiosk,141989.42,1986
