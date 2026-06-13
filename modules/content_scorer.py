@@ -27,22 +27,34 @@ CAPTION_MODELS = {
 
 @st.cache_resource(show_spinner=False)
 def _load_captioner(model_id: str):
-    import torch
-    from transformers import pipeline
+    """Load a BLIP/BLIP-2 captioner directly (CPU).
 
-    return pipeline(
-        "image-to-text",
-        model=model_id,
-        device="cpu",
-        torch_dtype=torch.float32,
-    )
+    We load the model classes by hand rather than via pipeline("image-to-text"):
+    transformers 5.x dropped that pipeline task. use_fast=False keeps the slow
+    PIL-based image processor so torchvision isn't a required dependency.
+    """
+    import torch
+    from transformers import AutoProcessor
+
+    if "blip2" in model_id:
+        from transformers import Blip2ForConditionalGeneration as CaptionModel
+    else:
+        from transformers import BlipForConditionalGeneration as CaptionModel
+
+    processor = AutoProcessor.from_pretrained(model_id, use_fast=False)
+    model = CaptionModel.from_pretrained(model_id, torch_dtype=torch.float32).to("cpu")
+    return processor, model
 
 
 def caption_image(image, model_id: str) -> str:
     """Caption a PIL image with the selected BLIP variant on CPU."""
-    captioner = _load_captioner(model_id)
-    out = captioner(image, max_new_tokens=40)
-    return out[0]["generated_text"].strip()
+    import torch
+
+    processor, model = _load_captioner(model_id)
+    inputs = processor(images=image, return_tensors="pt")
+    with torch.no_grad():
+        out = model.generate(**inputs, max_new_tokens=40)
+    return processor.decode(out[0], skip_special_tokens=True).strip()
 
 
 # ----------------------------------------------------------------- generation
